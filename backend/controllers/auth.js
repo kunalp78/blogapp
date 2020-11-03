@@ -27,32 +27,36 @@ const expressJwt = require('express-jwt');//helps to check if token has expired 
 //         })
 //     })
 // }
-exports.signup = async (req, res)=>{
-    const user = User.findOne({ email: req.body.email })
-        if(!user){
+
+exports.signup = (req, res) => {
+    // console.log(req.body);
+    User.findOne({ email: req.body.email }).exec((err, user) => {
+        if (user) {
             return res.status(400).json({
-                e: 'Email already taken'
-            })
+                error: 'Email is taken'
+            });
         }
-    
-    try{
-        const {name, email, password} = req.body;
+
+        const { name, email, password } = req.body;
         let username = shortId.generate();
         let profile = `${process.env.CLIENT_URL}/profile/${username}`;
 
-        let newUser = new User({name, email, password, profile, username});
-        await newUser.save()
-        res.status(200).json({
-            message: 'Signup Success',
-            ///body: success
-        })
-    }
-    catch(err){
-            return res.status(400).json({ 
-                error: err
-            })
-        }
-}
+        let newUser = new User({ name, email, password, profile, username });
+        newUser.save((err, success) => {
+            if (err) {
+                return res.status(400).json({
+                    error: err
+                });
+            }
+            // res.json({
+            //     user: success
+            // });
+            res.json({
+                message: 'Signup success! Please signin.'
+            });
+        });
+    });
+};
 
 exports.signin = (req, res) => {
     const { email, password } = req.body;
@@ -92,3 +96,35 @@ exports.requireSignin = expressJwt({
     algorithms: ["HS256"], // added later
     userProperty: "auth",
   });
+
+exports.authMiddleware = (req, res, next)=>{
+    //console.log(req.auth._id)
+    const authUserId = req.auth._id;
+    User.findById({_id: authUserId}).exec((err, user)=>{
+        if(err || !user){
+            return res.status(404).json({
+                error: 'User not found'
+            })
+        }
+        req.profile = user;
+        next()
+    })
+}
+
+exports.adminMiddleware = (req, res, next)=>{
+    const adminMiddleware = req.auth._id;
+    User.findById({_id: adminMiddleware}).exec((err, user)=>{
+        if(err || !user){
+            return res.status(404).json({
+                error: 'User not found'
+            })
+        }
+        if(user.role !== 1){
+            return res.status(404).json({
+                error: 'Admin resource access denied'
+            })
+        }
+        req.profile = user;
+        next()
+    })
+}
