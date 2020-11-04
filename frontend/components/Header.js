@@ -53,22 +53,22 @@ const Header = (props) => {
               
             </NavItem>
             </React.Fragment>}
-            {/* {isAuth() && (<React.Fragment>
+            
+            
+            {isAuth() && isAuth().role===0 && (
               <NavItem>
-              
-              
-                <NavLink style={{cursor: 'pointer'}} onClick = {() => Private(()=> Router.replace('/users'))}>
-                  Dashboard
+                <NavLink href='/user' style={{cursor: 'pointer'}}>
+                 {`${isAuth().name}'s Dashboard`}
                 </NavLink>
             </NavItem>
-            <NavItem>
-                <NavLink style={{cursor: 'pointer'}} onClick = {() => signout(()=> Router.replace('/signin'))}>
-                  Signout
+            )}
+            {isAuth() && isAuth().role===1 &&(
+              <NavItem>
+                <NavLink href='/admin' style={{cursor: 'pointer'}}>
+                 {`${isAuth().name}'s admin Dashboard`}
                 </NavLink>
-              
-          
-        </NavItem>
-            </React.Fragment> )} */}
+            </NavItem>
+            )}
             {isAuth() && (<NavItem>
                 <NavLink style={{cursor: 'pointer'}} onClick = {() => signout(()=> Router.replace('/signin'))}>
                   Signout
@@ -76,7 +76,6 @@ const Header = (props) => {
               
           
         </NavItem>)}
-            
           </Nav>
           <NavbarText>The E-Guardians</NavbarText>
         </Collapse>
