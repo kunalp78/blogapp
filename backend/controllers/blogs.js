@@ -116,7 +116,7 @@ exports.list = (req, res) => {
             res.json(data);
         });
 };
-
+//the [pagination part]
 exports.listAllBlogsCategoriesTags = (req, res) => {
     let limit = req.body.limit ? parseInt(req.body.limit) : 10;
     let skip = req.body.skip ? parseInt(req.body.skip) : 0;
@@ -223,7 +223,7 @@ exports.update = (req, res) => {
 
             if (body) {
                 oldBlog.excerpt = smartTrim(body, 320, ' ', ' ...');
-                oldBlog.desc = stripHtml(body.substring(0, 160));
+                oldBlog.mdesc = stripHtml(body.substring(0, 160));
             }
 
             if (categories) {

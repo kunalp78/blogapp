@@ -14,7 +14,7 @@ const categorySchema = new mongoose.Schema({
         index:true
     }
 },{
-    timestamp:true
+    timestamps:true
 })
 
 
