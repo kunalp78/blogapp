@@ -8,40 +8,7 @@ import {APP_NAME,API,DOMAIN,FB_APP_ID} from '../../config';
 import Card from '../../components/blog/Card';
 import '../../static/css/styles.css'
 const Blogs = ({ blogs, categories, tags, totalBlogs, blogsLimit, blogSkip, router }) => {
-    const head = () =>{
-        <Head>
-            <title>Daily News Headlines | {APP_NAME}</title>
-            
-            <meta 
-                name="description" 
-                content="Daily News headline and daily news hits of politics world people celebrity webseries movies and technology "
-                />
-            
-            <link rel="canonical" href={`${DOMAIN}${router.pathname}`} />
-            <meta property="og:title" content={`Latest news headline update | ${APP_NAME}`}/>
-            <meta 
-                property="og:description" 
-                content="Daily News headline and daily news hits of politics world people celebrity webseries movies and technology  "
-                />
-            <meta 
-                property="og:type"
-                content="website"
-            />
-            <meta 
-                property="og:url"
-                content={`${DOMAIN}${router.pathname}`}
-            />
-            <meta 
-                property="og:site_name"
-                content={`${APP_NAME}`}
-            />
-            <meta property="og:image" content={`${DOMAIN}/static/images/newsapp.jpg`}/>
-            <meta property="og:image:secure_url" content={`${DOMAIN}/static/images/newsapp.jpg`}/>
-            <meta property="og:image:type" content="image/jpg"/>
-            <meta property="fb:app_id" content={`${FB_APP_ID}`}/>
-
-        </Head>
-    };
+    
     const [limit, setState]= useState(blogsLimit);
     const [skip, setSkip]= useState(0);
     const [size, setSize]= useState(totalBlogs); 
@@ -105,7 +72,38 @@ const Blogs = ({ blogs, categories, tags, totalBlogs, blogsLimit, blogSkip, rout
 
     return(
     <React.Fragment>
-      {head()}
+      <Head>
+            <title>Daily News Headlines | {APP_NAME}</title>
+            
+            <meta 
+                name="description" 
+                content="Daily News headline and daily news hits of politics world people celebrity webseries movies and technology "
+                />
+            
+            <link rel="canonical" href={`${DOMAIN}${router.pathname}`} />
+            <meta property="og:title" content={`Latest news headline update | ${APP_NAME}`}/>
+            <meta 
+                property="og:description" 
+                content="Daily News headline and daily news hits of politics world people celebrity webseries movies and technology  "
+                />
+            <meta 
+                property="og:type"
+                content="website"
+            />
+            <meta 
+                property="og:url"
+                content={`${DOMAIN}${router.pathname}`}
+            />
+            <meta 
+                property="og:site_name"
+                content={`${APP_NAME}`}
+            />
+            <meta property="og:image" content={`${DOMAIN}/static/images/newsapp.jpg`}/>
+            <meta property="og:image:secure_url" content={`${DOMAIN}/static/images/newsapp.jpg`}/>
+            <meta property="og:image:type" content="image/jpg"/>
+            <meta property="fb:app_id" content={`${FB_APP_ID}`}/>
+
+        </Head>
         <Layout>
             <main>
                     <div className="container-fluid">
@@ -143,7 +141,7 @@ const Blogs = ({ blogs, categories, tags, totalBlogs, blogsLimit, blogSkip, rout
 
 Blogs.getInitialProps = () =>{
     let skip = 0;
-    let limit = 1;
+    let limit = 6;
     return listBlogsWithCategoriesAndTags(skip,limit).then(data =>{
         if(data.error){
             console.log(data.error);
