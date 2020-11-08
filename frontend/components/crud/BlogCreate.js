@@ -9,6 +9,7 @@ import {createBlog} from '../../actions/blog';
 const ReactQuill = dynamic(()=> import('react-quill'), {ssr:false});
 import '../../node_modules/react-quill/dist/quill.snow.css'
 import {QuillFormats, QuillModules} from '../../helpers/quill'
+import '../../static/css/styles.css';
 const CreateBlog = ({router})=>{
     const blofFromLS = () =>{
         if(typeof window === 'undefined'){
@@ -167,6 +168,7 @@ const CreateBlog = ({router})=>{
                         Publish
                     </button>
                 </div>
+                
             </form>
         )
     }

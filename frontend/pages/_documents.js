@@ -1,4 +1,4 @@
-import Document, { Html, Head, Main, NextScript } from 'next/document'
+import Document, { Html, Head, Main, NextScript } from 'next/document';
 // import "../static/css/styles.css";
 
 class MyDocument extends Document {
@@ -18,8 +18,7 @@ render() {
                 {/* <link rel="stylesheet" 
                 href="https://cdnjs.cloudflare.com/ajax/libs/nprogress/0.2.0/nprogress.min.css"
                 /> */}
-                <link rel="stylesheet"
-                href="/_next/static/css/styles.css"></link>
+                <link rel="stylesheet" href="/_next/static/css/styles.css"/>
             </Head>
             <body>
                 <Main />
@@ -30,4 +29,4 @@ render() {
 }
 }
 
-export default MyDocument
+export default MyDocument;

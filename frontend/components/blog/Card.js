@@ -19,22 +19,23 @@ const Card = ({blog})=>{
         ))
     
     return (
-        <div className="card text-center border-primary mb-3 pb-3" >
+    
+        <div className="card text-center border-primary mb-3 pb-3"  >
         {/* style={{width: "50rem"}}>        img: 245X160 or 245X260*/}
         <img className="card-img-top" 
              src={`${API}/blog/photo/${blog.slug}`} 
              style={{height:'150px',width:'100%',display:'block'}} 
-             alt={blog.title}></img>  
+             alt={blog.title}/> 
             
-            <div class="card-body">
+            <div className="card-body">
                 
                 <Link href={`/blogs/${blog.slug}`}>
                     <a>
-                        <h2 class="card-title">{blog.title.toUpperCase()}</h2>
+                        <h2 className="card-title">{blog.title.toUpperCase()}</h2>
                     </a>
                 </Link>
                 
-                <p class="card-text ">{renderHTML(blog.excerpt)}</p>
+                <p className="card-text ">{renderHTML(blog.excerpt)}</p>
                     <Link href={`/blogs/${blog.slug}`}>
                         <a className="btn btn-primary pt-2">Read more</a>
                     </Link>
@@ -46,13 +47,13 @@ const Card = ({blog})=>{
                 {showBlogTags(blog)}
 
             </div>
-            <div class="card-footer bg-transparent border-primary">
+            <div className="card-footer bg-transparent border-primary">
                 <small className="card-mark">
                     Written by {blog.postedBy.name} | Published {moment(blog.updatedAt).fromNow()}
                 </small>
             </div>
         </div>
-        
+   
     )
 }
 
