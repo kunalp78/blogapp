@@ -16,18 +16,20 @@ const Category = ({ category, blogs }) => {
                     <div className="container-fluid text-center">
                         <header>
                             <div className="col-md-12 pt-3">
-                                <h1 className="display-4 font-weight-bold">{category.name}</h1>
+                                <h1 className="display-4 font-weight-bold">
+                                    {category.name}
+                                </h1>
                                 <div className="row">
-                                <div className="col-md-10 offset-md-1">
-                                <div className="card-columns" >
-                                {blogs.map((b, i) => (
-                                    <div>
-                                        <Card key={i} blog={b} />
-                                        <hr />
+                                    <div className="col-md-10 offset-md-1">
+                                        <div className="card-columns" >
+                                            {blogs.map((b, i) => (
+                                                <div>
+                                                    <Card key={i} blog={b} />
+                                                    <hr />
+                                                </div>
+                                            ))}
+                                        </div>
                                     </div>
-                                ))}
-                                </div>
-                                </div>
                                 </div>
                             </div>
                         </header>
