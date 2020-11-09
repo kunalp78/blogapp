@@ -24,7 +24,7 @@ mongoose.connect(process.env.DATABASE,{
 
 //middleware
 app.use(morgan('dev'));
-app.use(bodyParser.json());
+app.use(bodyParser.json({ limit: "10mb" }));
 app.use(cookieParser());
 //cors
 if(process.env.NODE_ENV === 'development'){
@@ -36,6 +36,7 @@ app.use('/api',authRoutes);
 app.use('/api',usersRoutes);
 app.use('/api',categoryRoutes);
 app.use('/api',tagRoutes)
+
 
 //port
 const port = process.env.PORT || 8000
