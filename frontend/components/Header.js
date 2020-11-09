@@ -34,13 +34,13 @@ const Header = (props) => {
     <div>
       <Navbar color="light" light expand="md">
         <Link href="/blogs">
-        <NavLink className="font-weight-bold">{APP_NAME}</NavLink>
+        <NavLink className="font-weight-bold" style={{cursor: 'pointer'}}>{APP_NAME}</NavLink>
         </Link>
         <NavbarToggler onClick={toggle} />
         <Collapse isOpen={isOpen} navbar>
           <Nav className="ml-auto" navbar>
         
-         <React.Fragment>
+         {/* <React.Fragment>
               <NavItem>
                   <Link href="/blogs">
                     <NavLink style={{cursor: 'pointer'}}>
@@ -48,7 +48,7 @@ const Header = (props) => {
                     </NavLink>
                   </Link>
             </NavItem>
-          </React.Fragment>
+          </React.Fragment> */}
 
             {!isAuth() && <React.Fragment>
               <NavItem>
@@ -80,7 +80,7 @@ const Header = (props) => {
             {isAuth() && isAuth().role===1 &&(
               <NavItem>
                 <NavLink href='/admin' style={{cursor: 'pointer'}}>
-                 {`${isAuth().name}'s admin Dashboard`}
+                 {`Dashboard`}
                 </NavLink>
             </NavItem>
             )}
