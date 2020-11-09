@@ -33,13 +33,13 @@ const Header = (props) => {
   return (
     <div>
       <Navbar color="light" light expand="md">
-        <Link href="/">
+        <Link href="/blogs">
         <NavLink className="font-weight-bold">{APP_NAME}</NavLink>
         </Link>
         <NavbarToggler onClick={toggle} />
         <Collapse isOpen={isOpen} navbar>
           <Nav className="ml-auto" navbar>
-
+        
          <React.Fragment>
               <NavItem>
                   <Link href="/blogs">

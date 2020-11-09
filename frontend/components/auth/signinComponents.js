@@ -16,7 +16,7 @@ const SigninComponent = () => {
     const { email, password, error, loading, message, showForm} = values ;
 
     useEffect(()=>{
-        isAuth() && Router.push('/');
+        isAuth() && Router.push('/blogs');
     },[])
 
     const handleSubmit = (e) =>{

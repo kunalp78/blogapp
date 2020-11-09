@@ -11,6 +11,15 @@ import '../../node_modules/react-quill/dist/quill.snow.css'
 import {QuillFormats, QuillModules} from '../../helpers/quill'
 import '../../static/css/styles.css';
 const CreateBlog = ({router})=>{
+    const rel = () =>{
+        if(localStorage.getItem('executed')===undefined){
+            window.location.reload();
+            localStorage.setItem('executed',true);
+        }
+    }
+    useEffect(()=>{
+        rel()
+    },[])
     const blofFromLS = () =>{
         if(typeof window === 'undefined'){
             return false;
@@ -76,6 +85,13 @@ const CreateBlog = ({router})=>{
                 setBody('');
                 setCategories([]);
                 setTags([]);
+                if (isAuth() && isAuth().role === 1) {
+                    // Router.replace(`/admin/crud/${router.query.slug}`);
+                    Router.replace(`/admin`);
+                } else if (isAuth() && isAuth().role === 0) {
+                    // Router.replace(`/user/crud/${router.query.slug}`);
+                    Router.replace(`/user`);
+                }
             }
         })
     }

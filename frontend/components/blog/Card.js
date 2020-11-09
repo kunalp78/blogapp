@@ -47,12 +47,12 @@ const Card = ({blog})=>{
                     </Link>
             </div>
             
-            <div className="pb-2">
+            {/* <div className="pb-2">
                 
                 {showBlogCategories(blog)}
                 {showBlogTags(blog)}
 
-            </div>
+            </div> */}
             <div className="card-footer bg-transparent border-primary">
                 <small className="card-mark">
                     Written by {blog.postedBy.name} | Published {moment(blog.updatedAt).fromNow()}

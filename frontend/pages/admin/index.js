@@ -1,7 +1,16 @@
 import Layout from '../../components/Layout';
 import Admin from '../../components/auth/Admin';
+import React,{useEffect} from 'react';
 import Link from 'next/link';
 const AdminIndex = () =>{
+    const rel = () =>{
+        if(localStorage.getItem('executed')!=undefined){
+            localStorage.removeItem('executed')
+        }
+    }
+    useEffect(()=>{
+        rel();
+    },[])
     return(
         <Layout>
             <Admin>
@@ -20,6 +29,9 @@ const AdminIndex = () =>{
                                 </Link>
                                 <Link href="/admin/crud/blog">
                                 <a className="list-group-item list-group-item-action">Create Blog</a>
+                                </Link>
+                                <Link href="/admin/crud/blogs">
+                                <a className="list-group-item list-group-item-action">Update/Delete Blog</a>
                                 </Link>
                             </div>
                         </div>

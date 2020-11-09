@@ -1,18 +1,10 @@
 import Layout from '../../../components/Layout';
 import Admin from '../../../components/auth/Admin';
-import BlogCreate from '../../../components/crud/BlogCreate';
+import BlogUpdate from '../../../components/crud/BlogUpdate';
 import {useEffect} from 'react';
 import Link from 'next/link';
 const Blog = () =>{
-    const rel = () =>{
-        if(localStorage.getItem('executed')===undefined){
-            window.location.reload();
-            localStorage.setItem('executed',true);
-        }
-    }
-    useEffect(()=>{
-        rel()
-    },[])
+   
 
     return(
         <Layout>
@@ -20,12 +12,11 @@ const Blog = () =>{
                 <div className="container-fluid">
                     <div className="row">
                         <div className="col-md-12 pt-5 pb-5">
-                            <h2>Create a new Blog</h2>
+                            <h2>Update the blog</h2>
                         </div>
                         <div className="col-md-12">
-                            <BlogCreate/>
-                        </div>
-                        
+                            <BlogUpdate/>
+                        </div>    
                     </div>
                 </div>
             </Admin>            

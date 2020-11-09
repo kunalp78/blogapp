@@ -96,7 +96,7 @@ const SingleBlog = ({blog, query}) =>{
                             <div className="container pb-5">
                                 <h4 className="text-center pt-5 pb-5 h2">Related blogs</h4>
                                 <hr/>
-                                {showRelatedBlog(blog)}
+                                <div className="row">{showRelatedBlog()}</div>
                             </div>
                             <div className="container pb-5">
                                 <p>comments</p>

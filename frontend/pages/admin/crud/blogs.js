@@ -1,29 +1,19 @@
 import Layout from '../../../components/Layout';
 import Admin from '../../../components/auth/Admin';
-import BlogCreate from '../../../components/crud/BlogCreate';
-import {useEffect} from 'react';
-import Link from 'next/link';
-const Blog = () =>{
-    const rel = () =>{
-        if(localStorage.getItem('executed')===undefined){
-            window.location.reload();
-            localStorage.setItem('executed',true);
-        }
-    }
-    useEffect(()=>{
-        rel()
-    },[])
+import BlogRead from '../../../components/crud/BlogRead';
 
+import Link from 'next/link';
+const Blogs = () =>{
     return(
         <Layout>
             <Admin>
                 <div className="container-fluid">
                     <div className="row">
                         <div className="col-md-12 pt-5 pb-5">
-                            <h2>Create a new Blog</h2>
+                            <h2>Manage Blogs</h2>
                         </div>
                         <div className="col-md-12">
-                            <BlogCreate/>
+                            <BlogRead/>
                         </div>
                         
                     </div>
@@ -33,4 +23,4 @@ const Blog = () =>{
     )
 }
 
-export default Blog;
+export default Blogs;
