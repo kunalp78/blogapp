@@ -1,14 +1,40 @@
 import Head from 'next/head';
 import Link from 'next/link';
 import Layout from '../../components/Layout';
-import React,{useState} from 'react';
-import {singleBlog} from '../../actions/blog';
+import React,{useEffect, useState} from 'react';
+import { listRelated, singleBlog} from '../../actions/blog';
 import {APP_NAME,API,DOMAIN,FB_APP_ID} from '../../config';
 import renderHTML from 'react-render-html';
 import moment from 'moment';
-
+import SmallCard from '../../components/blog/SmallCard'
+import '../../static/css/styles.css'
 const SingleBlog = ({blog, query}) =>{
-    
+    const [related, setRelated] = useState([]);
+
+    const loadRelated = () => {
+        listRelated({ blog }).then(data => {
+            if (data.error) {
+                console.log(data.error);
+            } else {
+                setRelated(data);
+            }
+        });
+    };
+
+    useEffect(() => {
+        loadRelated();
+    }, []);
+    console.log(related,'hello')
+    //it wii run when the component mounts
+    const showRelatedBlog = () => {
+        return related.map((blog, i) => (
+            <div className="col-md-4" key={i}>
+                <article>
+                    <SmallCard blog={blog} />
+                </article>
+            </div>
+        ));
+    };
     const showBlogCategories = blog =>
         blog.categories.map((c,i)=>(
             <Link key={i} href={`/categories/${c.slug}`}>
@@ -26,11 +52,10 @@ const SingleBlog = ({blog, query}) =>{
     return <React.Fragment>
             <Head>
             <title>{blog.title} | {APP_NAME}</title>
-            
-            <meta name="description" content={blog.mdesc}/>
+            <meta name="description" content={blog.mdesc.result}/>
             <link rel="canonical" href={`${DOMAIN}/blogs/${query.slug}`} />
             <meta property="og:title" content={`${blog.title} | ${APP_NAME}`}/>
-            <meta property="og:description" content={blog.mdesc}/>
+            <meta property="og:description" content={blog.mdesc.result}/>
             <meta property="og:type" content="website"/>
             <meta property="og:url" content={`${DOMAIN}/blogs/${query.slug}`}
             />
@@ -71,7 +96,7 @@ const SingleBlog = ({blog, query}) =>{
                             <div className="container pb-5">
                                 <h4 className="text-center pt-5 pb-5 h2">Related blogs</h4>
                                 <hr/>
-                                <p>show related blogs</p>
+                                {showRelatedBlog(blog)}
                             </div>
                             <div className="container pb-5">
                                 <p>comments</p>

@@ -277,7 +277,7 @@ exports.listRelated = (req, res) =>{
 
     const {_id, categories} = req.body.blog;
 
-    Blog.find({_id: {$ne: _id}, categories: {$in: categories}})
+    Blog.find({_id: {$ne: _id}, categories: {$in: categories} })
     .limit(limit)
     .populate('postedBy','_id name profile')
     .select('title slug excerpt postedBy createdAt updatedAt')
@@ -287,6 +287,6 @@ exports.listRelated = (req, res) =>{
                 error:'Blogs not found'
             })
         }
-        res.status(200).json(blogs)
+        res.status(200).json(blogs);
     })
 }

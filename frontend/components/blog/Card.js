@@ -22,10 +22,16 @@ const Card = ({blog})=>{
     
         <div className="card text-center border-primary mb-3 pb-3"  >
         {/* style={{width: "50rem"}}>        img: 245X160 or 245X260*/}
-        <img className="card-img-top" 
-             src={`${API}/blog/photo/${blog.slug}`} 
-             style={{height:'150px',width:'100%',display:'block'}} 
-             alt={blog.title}/> 
+             <Link href={`/blogs/${blog.slug}`}>
+                    <a>
+                        <img
+                            className="card-img-top" 
+                            src={`${API}/blog/photo/${blog.slug}`} 
+                            style={{height:'150px',width:'100%',display:'block'}} 
+                            alt={blog.title}
+                        />
+                    </a>
+                </Link>
             
             <div className="card-body">
                 
