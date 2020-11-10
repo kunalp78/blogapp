@@ -13,7 +13,6 @@ export const create = (category, token) =>{
         body: JSON.stringify(category)
     })
    .then( response=> {
-       handleResponse(response);
        return response.json()})
 .catch(e=>{
     console.log(e)
@@ -63,7 +62,6 @@ export const removeCategory = (slug, token) =>{
         }
     })
    .then( response=> {
-    handleResponse(response);
        return response.json()})
 .catch(e=>{
     console.log(e)

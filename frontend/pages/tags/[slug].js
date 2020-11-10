@@ -18,8 +18,7 @@ const Tag = ({ tag, blogs, query }) => {
             <meta property="og:title" content={`${tag.name} | ${APP_NAME}`}/>
             <meta property="og:description" content={`Daily News Analysis ${tag.name}`}/>
             <meta property="og:type" content="website"/>
-            <meta property="og:url" content={`${DOMAIN}/tags/${query.slug}`}
-            />
+            <meta property="og:url" content={`${DOMAIN}/tags/${query.slug}`}/>
             <meta property="og:site_name" content={`${APP_NAME}`}
             />
             <meta property="og:image" content={`${DOMAIN}/static/images/newsapp.jpg`}/>
@@ -62,7 +61,7 @@ Tag.getInitialProps = ({ query }) => {
         if (data.error) {
             console.log(data.error);
         } else {
-            return { tag: data.tag, blogs: data.blogs };
+            return { tag: data.tag, blogs: data.blogs, query };
         }
     });
 };

@@ -21,8 +21,8 @@ const AdminIndex = () =>{
                                 <a className="list-group-item list-group-item-action">Create Tags</a>
                                 </Link>
                                 <a href="/admin/crud/blog" className="list-group-item list-group-item-action">Create Blog</a>
-                                <Link href="/admin/crud/blogs">
-                                <a className="list-group-item list-group-item-action">Update/Delete Blog</a>
+                                <Link>
+                                <a  href="/admin/crud/blogs" className="list-group-item list-group-item-action">Update/Delete Blog</a>
                                 </Link>
                             </div>
                         </div>

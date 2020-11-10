@@ -1,8 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import {DISQUS_SHORTNAME, DOMAIN} from '../config';
 
-const SHORTNAME = 'example';
-const WEBSITE_URL = 'http://www.example.com';
+const SHORTNAME = DISQUS_SHORTNAME;
+const WEBSITE_URL = DOMAIN;
 
 function renderDisqus() {
   if (window.DISQUS === undefined) {

@@ -13,7 +13,6 @@ export const createBlog = (blog, token) =>{
         body: blog
     })
    .then( response=> {
-        handleResponse(response);
        return response.json()})
 .catch(e=>{
     console.log(e)
@@ -82,7 +81,6 @@ export const removeBlog = (slug, token) =>{
         }
     })
    .then( response=> {
-    handleResponse(response);
        return response.json()})
 .catch(e=>{
     console.log(e)
@@ -99,7 +97,6 @@ export const updateBlog = (blog, token, slug) =>{
         body: blog
     })
    .then( response=> {
-    handleResponse(response);
        return response.json()})
 .catch(e=>{
     console.log(e)

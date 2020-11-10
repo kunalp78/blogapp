@@ -62,7 +62,7 @@ Category.getInitialProps = ({ query }) => {
         if (data.error) {
             console.log(data.error);
         } else {
-            return { category: data.category, blogs: data.blogs };
+            return { category: data.category, blogs: data.blogs, query };
         }
     });
 };

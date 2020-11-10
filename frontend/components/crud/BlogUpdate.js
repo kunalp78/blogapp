@@ -13,6 +13,7 @@ import { QuillModules, QuillFormats } from '../../helpers/quill';
 import { API } from '../../config';
 
 const BlogUpdate = ({ router }) => {
+    
     const [body, setBody] = useState('');
 
     const [categories, setCategories] = useState([]);
@@ -53,6 +54,26 @@ const BlogUpdate = ({ router }) => {
                 }
             });
         }
+    };
+    const editBlog = e => {
+        e.preventDefault();
+        let formData = new FormData();
+        formData.append("title", values.title);
+        formData.append("body", body) 
+        updateBlog(formData, token, router.query.slug).then(data => {
+            if (data.error) {
+                setValues({ ...values, error: data.error });
+            } else {
+                setValues({ ...values, title: '', success: `Blog titled "${data.title}" is successfully updated` });
+                if (isAuth() && isAuth().role === 1) {
+                    // Router.replace(`/admin/crud/${router.query.slug}`);
+                    Router.replace(`/admin`);
+                } else if (isAuth() && isAuth().role === 0) {
+                    // Router.replace(`/user/crud/${router.query.slug}`);
+                    Router.replace(`/user`);
+                }
+            }
+        });
     };
 
     const setCategoriesArray = blogCategories => {
@@ -187,26 +208,7 @@ const BlogUpdate = ({ router }) => {
         formData.set('body', e);
     };
 
-    const editBlog = e => {
-        e.preventDefault();
-        let formData = new FormData();
-        formData.append("title", values.title);
-        formData.append("body", body) 
-        updateBlog(formData, token, router.query.slug).then(data => {
-            if (data.error) {
-                setValues({ ...values, error: data.error });
-            } else {
-                setValues({ ...values, title: '', success: `Blog titled "${data.title}" is successfully updated` });
-                if (isAuth() && isAuth().role === 1) {
-                    // Router.replace(`/admin/crud/${router.query.slug}`);
-                    Router.replace(`/admin`);
-                } else if (isAuth() && isAuth().role === 0) {
-                    // Router.replace(`/user/crud/${router.query.slug}`);
-                    Router.replace(`/user`);
-                }
-            }
-        });
-    };
+    
 
     const showError = () => (
         <div className="alert alert-danger" style={{ display: error ? '' : 'none' }}>

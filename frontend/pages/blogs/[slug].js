@@ -6,7 +6,8 @@ import { listRelated, singleBlog} from '../../actions/blog';
 import {APP_NAME,API,DOMAIN,FB_APP_ID} from '../../config';
 import renderHTML from 'react-render-html';
 import moment from 'moment';
-import SmallCard from '../../components/blog/SmallCard'
+import SmallCard from '../../components/blog/SmallCard';
+import DisqusThread from '../../components/DisqusThread';
 import '../../static/css/styles.css'
 const SingleBlog = ({blog, query}) =>{
     const [related, setRelated] = useState([]);
@@ -48,6 +49,11 @@ const SingleBlog = ({blog, query}) =>{
                 <a className="btn btn-outline-primary mr-1 ml-1 mt-3">{t.name}</a>
             </Link>
         ))
+    const showComments = () => (
+        <div>
+            <DisqusThread id={blog.id} title={blog.title} path={`/blog/${blog.slug}`} />
+        </div>
+    )
         
     return <React.Fragment>
             <Head>
@@ -99,7 +105,7 @@ const SingleBlog = ({blog, query}) =>{
                                 <div className="row">{showRelatedBlog()}</div>
                             </div>
                             <div className="container pb-5">
-                                <p>comments</p>
+                                {showComments()}
                             </div>
                         </div>
                     </article>
