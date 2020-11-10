@@ -1,6 +1,7 @@
 import fetch from 'isomorphic-fetch';
 import {API} from '../config';
-
+import queryString from 'query-string';
+import { isAuth, handleResponse} from './auth';
 export const createBlog = (blog, token) =>{
     
     return fetch(`${API}/blog`,{
@@ -12,6 +13,7 @@ export const createBlog = (blog, token) =>{
         body: blog
     })
    .then( response=> {
+        handleResponse(response);
        return response.json()})
 .catch(e=>{
     console.log(e)
@@ -80,6 +82,7 @@ export const removeBlog = (slug, token) =>{
         }
     })
    .then( response=> {
+    handleResponse(response);
        return response.json()})
 .catch(e=>{
     console.log(e)
@@ -96,8 +99,22 @@ export const updateBlog = (blog, token, slug) =>{
         body: blog
     })
    .then( response=> {
+    handleResponse(response);
        return response.json()})
 .catch(e=>{
     console.log(e)
 })
 }
+
+export const listSearch = params => {
+    console.log('search params', params);
+    let query = queryString.stringify(params);
+    console.log('query params', query);
+    return fetch(`${API}/blogs/search?${query}`, {
+        method: 'GET'
+    })
+        .then(response => {
+            return response.json();
+        })
+        .catch(err => console.log(err));
+};

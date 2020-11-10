@@ -5,6 +5,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import {APP_NAME} from '../config';
 import {signout, isAuth} from '../actions/auth';
 import Private from './auth/Private';
+import Search from './blog/search';
 import {
   Collapse,
   Navbar,
@@ -13,11 +14,12 @@ import {
   Nav,
   NavItem,
   NavLink,
-  UncontrolledDropdown,
+  Dropdown,
   DropdownToggle,
   DropdownMenu,
   DropdownItem,
-  NavbarText
+  NavbarText,
+  
 } from 'reactstrap';
 import Link from 'next/link';
 import '.././node_modules/nprogress/nprogress.css'
@@ -26,12 +28,15 @@ Router.onRouteChangeComplete = url => NProgress.done()
 Router.onRouteChangeError = url => NProgress.done()
 
 const Header = (props) => {
+  // const [dropdownOpen, setDropdownOpen] = useState(false);
+
+  // const toggleDrop = () => setDropdownOpen(!dropdownOpen);
   const [isOpen, setIsOpen] = useState(false);
 
   const toggle = () => setIsOpen(!isOpen);
     console.log(APP_NAME,'k')
   return (
-    <div>
+    <React.Fragment>
       <Navbar color="light" light expand="md">
         <Link href="/blogs">
         <NavLink className="font-weight-bold" style={{cursor: 'pointer'}}>{APP_NAME}</NavLink>
@@ -49,7 +54,18 @@ const Header = (props) => {
                   </Link>
             </NavItem>
           </React.Fragment> */}
-
+          {/* <Dropdown nav isOpen={dropdownOpen} toggle={toggleDrop}>
+          <DropdownToggle nav caret>
+            Dropdown
+          </DropdownToggle>
+          <DropdownMenu>
+            <DropdownItem header>Categories</DropdownItem>
+            <DropdownItem >Action</DropdownItem>
+            <DropdownItem divider />
+            <DropdownItem disabled>Tags</DropdownItem>
+            <DropdownItem>Another Action</DropdownItem>
+          </DropdownMenu>
+        </Dropdown> */}
             {!isAuth() && <React.Fragment>
               <NavItem>
                   <Link href="/signin">
@@ -89,13 +105,15 @@ const Header = (props) => {
                   Signout
                 </NavLink>
               
+              
           
         </NavItem>)}
           </Nav>
           <NavbarText>The E-Guardians</NavbarText>
         </Collapse>
       </Navbar>
-    </div>
+      <Search/>
+    </React.Fragment>
   );
 }
 
