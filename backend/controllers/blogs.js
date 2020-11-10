@@ -290,3 +290,19 @@ exports.listRelated = (req, res) =>{
         res.status(200).json(blogs);
     })
 }
+
+exports.listSearch = (res, req) =>{
+    const {search} = req.query;
+    if(search){
+        Blog.find({
+            $or: [{title: {$regex: search, $options: 'i'}},{body: {$regex: search, $options: 'i'}}]
+        },(error, blogs)=>{
+            if(error){
+                return res.status(400).json({
+                    error: errorHandler(error)
+                })
+            }
+            res.status(200).json(blogs)
+        }).select('-photo -body')
+    }
+}
