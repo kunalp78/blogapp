@@ -34,7 +34,7 @@ const Header = (props) => {
   const [isOpen, setIsOpen] = useState(false);
 
   const toggle = () => setIsOpen(!isOpen);
-    console.log(APP_NAME,'k')
+    //console.log(APP_NAME,'k')
   return (
     <React.Fragment>
       <Navbar color="light" light expand="md">
