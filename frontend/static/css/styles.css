@@ -11,6 +11,43 @@
         max-height: 500px;
         object-fit: cover;
 }
+.results {
+        list-style: none;
+        margin: 9px 0 0;
+        padding: 0;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        overflow-y: scroll;
+        height: 350px;
+        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+      }
+.results::-webkit-scrollbar {
+        display: none;
+    }
+.results{
+        -ms-overflow-style: none;  /* IE and Edge */
+        scrollbar-width: none;  /* Firefox */
+}
+.result {
+        background: white;
+        color:#007bff;
+        margin-left: inherit;
+        padding: 0px;
+        
+      }
+      
+.results :hover {
+        color: white;
+        background-color: #007bff;
+        text-decoration: none;
+        transition: 350ms;
+}
+.pos {  
+        position: relative;
+}
+      
 @media (max-width: 70em) {
         .card-columns {
             -webkit-column-count:1;

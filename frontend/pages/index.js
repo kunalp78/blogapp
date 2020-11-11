@@ -1,6 +1,7 @@
 import Layout from '../components/Layout';
 import Router from 'next/router'
 import {useEffect} from 'react';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import Link from 'next/link';
 const Index = () =>{
     useEffect(()=>{
