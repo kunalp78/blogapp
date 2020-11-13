@@ -42,7 +42,7 @@ const BlogRead = () => {
         }
     }
     const showAllBlogs = () =>(
-        blogs.map((blog, i)=>(
+        blogs.reverse().map((blog, i)=>(
             <div key={i}>
                 <h3>{blog.title}</h3>
                 <p className="mark">Written by {blog.postedBy.name} | Published on {moment(blog.updatedAt).fromNow()} </p>
@@ -66,10 +66,20 @@ const BlogRead = () => {
             )
         }
     }
+    const handleChange = (e) => {
+        
+        const searchString = e.target.value.toLowerCase();
+        return blogs.filter(blog => (
+            blog.title.toLowerCase().includes(searchString)
+        ))
+    }
     return (
     <React.Fragment>
         <div className="container">
             <div className="row">
+                {/* <div className="col-md-12">
+                <input type="search" className="form-control mr-sm-2" placeholder="Search blogs"/>
+                </div> */}
                 <div className="col-md-12">
                     {message && <div className="alert alert-warning">{message}</div> }
                     {showAllBlogs()}

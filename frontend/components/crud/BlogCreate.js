@@ -11,15 +11,7 @@ import '../../node_modules/react-quill/dist/quill.snow.css'
 import {QuillFormats, QuillModules} from '../../helpers/quill'
 import '../../static/css/styles.css';
 const CreateBlog = ({router})=>{
-    const rel = () =>{
-        if(localStorage.getItem('executed')===undefined){
-            window.location.reload();
-            localStorage.setItem('executed',true);
-        }
-    }
-    useEffect(()=>{
-        rel()
-    },[])
+    
     const blofFromLS = () =>{
         if(typeof window === 'undefined'){
             return false;

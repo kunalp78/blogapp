@@ -14,12 +14,9 @@ import {
   Nav,
   NavItem,
   NavLink,
-  Dropdown,
-  DropdownToggle,
-  DropdownMenu,
-  DropdownItem,
   NavbarText,
-  Form
+  Form,
+  NavDropdown
   
 } from 'react-bootstrap';
 import Link from 'next/link';
@@ -38,26 +35,38 @@ const Header = (props) => {
     //console.log(APP_NAME,'k')
   return (
       <React.Fragment>
-        <Navbar fixed="top" id="kun" bg="light" variant="light" expand="lg">
+        <Navbar fixed="top" id="kun" bg="dark" variant="dark" expand="lg">
         <Navbar.Brand className="navbar-brand" id="logo" href="/blogs">{APP_NAME}</Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
         <Nav className="mr-auto">
+                <Nav.Link href="/categories/news" active >News</Nav.Link>
+                <Nav.Link href="/categories/world">World</Nav.Link>
+                <Nav.Link href="/categories/politics">Politics</Nav.Link>
+                <Nav.Link href="/categories/fashion">Fashion</Nav.Link>
+                <Nav.Link href="/categories/bollywood">Bollywood</Nav.Link>
+                <Nav.Link href="/categories/hollywood">Hollywood</Nav.Link>
+                <Nav.Link href="/categories/web-series">Web-Series</Nav.Link>
+                <Nav.Link href="/categories/science">Science</Nav.Link>
+                <Nav.Link href="/categories/gadgets">Gadgets</Nav.Link>
+                <NavDropdown title="Profile" id="basic-nav-dropdown">                
         {!isAuth() && <React.Fragment>
-                <Nav.Link href="/signin">Login</Nav.Link>
-                <Nav.Link href="/signup"> Sign Up </Nav.Link>
+                <NavDropdown.Item href="/signin">Login</NavDropdown.Item>
+                <NavDropdown.Item href="/signup"> Sign Up </NavDropdown.Item>
              </React.Fragment>}
               {isAuth() && isAuth().role===0 && (
-                <Nav.Link href='/user' >{`${isAuth().name}'s Dashboard`}</Nav.Link>
+                <NavDropdown.Item href='/user' >{`${isAuth().name}'s Dashboard`}</NavDropdown.Item>
              )}
              {isAuth() && isAuth().role===1 &&(
-              
-              <Nav.Link href='/admin' >{`Dashboard`}</Nav.Link>
-             
+              <NavDropdown.Item href='/admin' >{`Dashboard`}</NavDropdown.Item>
              )}
              {isAuth() && (
-                 <Nav.Link href="/signin" onClick = {() => signout(()=> Router.replace('/signin'))}>Signout</Nav.Link>
+                <span>
+                  <NavDropdown.Divider />
+                 <NavDropdown.Item href="/blogs" onClick = {() => signout(()=> Router.replace('/blogs'))}>Signout</NavDropdown.Item>
+                </span>
               )}
+              </NavDropdown>
               </Nav>
               <Search/>
               </Navbar.Collapse>

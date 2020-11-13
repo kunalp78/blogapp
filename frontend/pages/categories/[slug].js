@@ -30,24 +30,32 @@ const Category = ({ category, blogs, query }) => {
         </Head>
             <Layout>
                 <main>
+                <div className="border border-dark col-md-12">ad0</div>  {/** advertisment */ }
+
                     <div className="container-fluid text-center">
                         <header>
                             <div className="col-md-12 pt-3">
                                 <h1 className="display-4 font-weight-bold">
                                     {category.name}
                                 </h1>
+                    <div className="border border-dark col-md-12">ad1</div>  {/** advertisment */ }
+                                <div className="container-fluid">
                                 <div className="row">
-                                    <div className="col-md-10 offset-md-1">
+                    <div className="border border-dark col-md-2">ad2</div>  {/** advertisment */ }
+
+                                    <div className="col-md-9">
                                         <div className="card-columns" >
                                             {blogs.map((b, i) => (
                                                 <div>
                                                     <Card key={i} blog={b} />
-                                                    <hr />
                                                 </div>
                                             ))}
                                         </div>
                                     </div>
+                    <div className="border border-dark col-md-1">ad3</div>  {/** advertisment */ }
                                 </div>
+                    <div className="border border-dark col-md-12">ad4</div>  {/** advertisment */ }
+                            </div>
                             </div>
                         </header>
                     </div>
