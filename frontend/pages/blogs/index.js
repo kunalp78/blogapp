@@ -120,17 +120,17 @@ const Blogs = ({ blogs, categories, tags, totalBlogs, blogsLimit, blogSkip, rout
                             </section>
                         </header>
                     </div>
-                    <div className="border border-dark col-md-12">ad0</div>  {/** advertisment */ }
+                    <div className="col-md-12"></div>  {/** advertisment */ }
                     <div className="container-fluid">
                         <div className="row">
-                        <div className="border border-dark col-md-2">ad</div>  {/** advertisment */ }
-                            <div className="col-md-9">
+                        <div className="col-md-2"></div>  {/** advertisment */ }
+                            <div className="col-md-9 offset-1">
                                 <div className="card-columns" >
                                     {showAllBlogs()}
                                     {showLoadedBlogs()}
                                 </div>
                             </div>
-                        <div className="border border-dark col-md-1">ad1</div> {/** advertisment */}
+                        <div className="col-md-1"></div> {/** advertisment */}
                         </div>
                     </div>
                     <div className="container-fluid text-center">{loadMoreButton()}</div>

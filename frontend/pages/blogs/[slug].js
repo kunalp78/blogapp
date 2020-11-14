@@ -82,20 +82,20 @@ const SingleBlog = ({blog, query}) =>{
                                     <img src={`${API}/blog/photo/${blog.slug}`} alt={blog.title} className="img img-fluid featured-image"/>
                                 </div>
                             </section>
-                            <div className="border border-dark col">ad0</div>  {/** advertisment */ }
+                            <div className="col"></div>  {/** advertisment */ }
                             <div className="container-fluid">
                                 <section>
                                     <div className="display-3 col-md-12 lead mt-4">{renderHTML(blog.title)}</div>
-                                    <div className="border border-dark col-md-12">ad4</div>  {/** advertisment */ }
+                                    <div className="col-md-12"></div>  {/** advertisment */ }
                                     <div className='row'>
-                                    <div className="border border-dark col-md-2">ad1</div>  {/** advertisment */ }
+                                    <div className="col-md-2"></div>  {/** advertisment */ }
                                     <div className="col-md-8 lead mt-4">{renderHTML(blog.body)}</div>
-                                    <div className="border border-dark col-md-2">ad2</div>  {/** advertisment */ }
+                                    <div className="col-md-2"></div>  {/** advertisment */ }
                                     </div>
                                 </section>
                             </div>
                             <section>
-                            <div className="border border-dark col-md-12">ad3</div>  {/** advertisment */ }
+                            <div className="col-md-12"></div>  {/** advertisment */ }
                                 <p className="lead mt-3 mark">
                                 Written by {blog.postedBy.name} | Published {moment(blog.updatedAt).fromNow()}
                                 </p>
@@ -108,10 +108,10 @@ const SingleBlog = ({blog, query}) =>{
                             </section>
                             <div className="container pb-5">
                                 <h4 className="text-center pt-5 pb-5 h2">Related blogs</h4>
-                                <div className="border border-dark col-md-12">ad5</div>  {/** advertisment */ }
+                                <div className="col-md-12"></div>  {/** advertisment */ }
                                 <hr/>
                                 <div className="row">{showRelatedBlog()}</div>
-                                <div className="border border-dark col-md-12">ad6</div>  {/** advertisment */ }
+                                <div className="col-md-12"></div>  {/** advertisment */ }
                             </div>
                             <div className="container pb-5">
                                 {showComments()}
