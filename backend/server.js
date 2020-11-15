@@ -16,7 +16,7 @@ const formRoutes = require('./routes/form');
 const app = express();
 
 //db
-mongoose.connect(process.env.DATABASE,{ 
+mongoose.connect(process.env.PRODUCTION_DATABASE,{ 
     useNewUrlParser: true, 
     useUnifiedTopology: true, 
     useCreateIndex: true, 
@@ -29,7 +29,7 @@ app.use(bodyParser.json({ limit: "10mb" }));
 app.use(cookieParser());
 //cors
 if(process.env.NODE_ENV === 'development'){
-    app.use(cors({ origin: `${process.env.CLIENT_URL}`}));
+    app.use(cors({ origin: `${process.env.PRODUCTION_URL}`}));
 }
 //routes middleware
 app.use('/api',blogRoutes);

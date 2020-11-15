@@ -11,7 +11,7 @@ const expressJwt = require('express-jwt');//helps to check if token has expired 
 //             }
 //         const {name, email, password} = req.body;
 //         let username = shortId.generate();
-//         let profile = `${process.env.CLIENT_URL}/profile/${username}`;
+//         let profile = `${process.env.PRODUCTION_URL}/profile/${username}`;
 
 //         let newUser = new User({name, email, password, profile, username});
 //         await newUser.save((err, success)=>{
@@ -39,7 +39,7 @@ exports.signup = (req, res) => {
 
         const { name, email, password } = req.body;
         let username = shortId.generate();
-        let profile = `${process.env.CLIENT_URL}/profile/${username}`;
+        let profile = `${process.env.PRODUCTION_URL}/profile/${username}`;
 
         let newUser = new User({ name, email, password, profile, username });
         newUser.save((err, success) => {
