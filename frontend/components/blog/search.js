@@ -36,7 +36,7 @@ const Search = () => {
                 {results.map((blog, i) => {
                     return (
                         
-                        <li class="result pt-2 pb-1 pl-3" key={i} >
+                        <li className="result pt-2 pb-1 pl-3" key={i} >
                             <span href={`/blogs/${blog.slug}`}>
                                 {blog.title}
                             </span>
@@ -60,7 +60,7 @@ const Search = () => {
     
     return (
         <span>
-        <form class='form-inline' onSubmit={searchSubmit}>
+        <form className='form-inline' onSubmit={searchSubmit}>
             {searchForm()}
            
         </form>

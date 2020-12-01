@@ -12,6 +12,7 @@ const Category = ({ category, blogs, query }) => {
     return (
         <React.Fragment>
         <Head>
+        {console.log(category)}
             <title>{category.name} | {APP_NAME}</title>
             <meta name="description" content={`Daily News Analysis ${category.name}`}/>
             <link rel="canonical" href={`${DOMAIN}/categories/${query.slug}`} />
